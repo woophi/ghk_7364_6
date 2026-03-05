@@ -9,15 +9,12 @@ import { Spinner } from '@alfalab/core-components/spinner/cssm';
 import { Steps } from '@alfalab/core-components/steps/cssm';
 import { Tag } from '@alfalab/core-components/tag/cssm';
 import { Typography } from '@alfalab/core-components/typography/cssm';
-import { CheckmarkCircleMIcon } from '@alfalab/icons-glyph/CheckmarkCircleMIcon';
 import { CheckmarkMIcon } from '@alfalab/icons-glyph/CheckmarkMIcon';
 import { ChevronDownMIcon } from '@alfalab/icons-glyph/ChevronDownMIcon';
 import { ChevronUpMIcon } from '@alfalab/icons-glyph/ChevronUpMIcon';
 import { DocumentLinesLineMIcon } from '@alfalab/icons-glyph/DocumentLinesLineMIcon';
 import { PercentMIcon } from '@alfalab/icons-glyph/PercentMIcon';
 import { QuestionCircleLineMIcon } from '@alfalab/icons-glyph/QuestionCircleLineMIcon';
-import { ShieldMIcon } from '@alfalab/icons-glyph/ShieldMIcon';
-import { UmbrellaMIcon } from '@alfalab/icons-glyph/UmbrellaMIcon';
 import { Fragment, useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import percentImg from './assets/percent.png';
@@ -51,24 +48,6 @@ const hiw = [
   {
     title: 'Получайте больше дохода',
     desc: 'По вкладу с повышенной ставкой и от инвестиций в ПДС',
-  },
-];
-
-const secs = [
-  {
-    title: 'Вклад застрахован',
-    subtitle: 'До 1 400 000 ₽ под защитой',
-    icon: <UmbrellaMIcon color="#000000" />,
-  },
-  {
-    title: 'Прозрачный доход',
-    subtitle: 'Ставка прописана в договоре — никаких скрытых условий',
-    icon: <CheckmarkCircleMIcon color="#000000" />,
-  },
-  {
-    title: 'Защита от импульсивных покупок',
-    subtitle: 'Не тратьте деньги на ненужные мелочи',
-    icon: <ShieldMIcon color="#000000" />,
   },
 ];
 
@@ -160,7 +139,6 @@ const btns = [
 ];
 
 const MIN_INVEST_SUM = 30_000;
-const MIN_INVEST_VKLAD = 30_000;
 
 const docNumberPds = randomDocNumber();
 const docNumberVklad = randomDocNumber();
@@ -198,7 +176,7 @@ export const App = () => {
   useTimeout(
     () => {
       if (steps === 'step-confirm3') {
-        window.gtag('event', '7364_sms_pds', { var: 'var3' });
+        window.gtag('event', '7364_sms_pds', { var: 'var6' });
         sendDataToGA({
           sum: pdsSum,
           product_type: 'ПДС',
@@ -206,7 +184,7 @@ export const App = () => {
         setSteps('step-confirmed3');
       }
       if (steps === 'step5') {
-        window.gtag('event', '7364_sms_deposit', { var: 'var3' });
+        window.gtag('event', '7364_sms_deposit', { var: 'var6' });
         submit();
       }
       setOtpCode('');
@@ -230,7 +208,7 @@ export const App = () => {
   };
 
   const goToStep2 = () => {
-    window.gtag('event', '7364_open_pds', { var: 'var3' });
+    window.gtag('event', '7364_open_pds', { var: 'var6' });
     if (shouldErrorInvestSum) {
       setError('Минимальная сумма — 60 000 ₽');
       return;
@@ -250,7 +228,7 @@ export const App = () => {
   };
 
   const goToConfirmStep3 = () => {
-    window.gtag('event', '7364_pay_pds', { var: 'var3' });
+    window.gtag('event', '7364_pay_pds', { var: 'var6' });
     setSteps('step-confirm3');
   };
 
@@ -521,7 +499,7 @@ export const App = () => {
             block
             view="secondary"
             onClick={() => {
-              window.gtag('event', '7364_open_deposit_after_pds', { var: 'var3' });
+              window.gtag('event', '7364_open_deposit_after_pds', { var: 'var6' });
               setSteps('step3');
             }}
             style={{ backgroundColor: '#FFFFFF24', color: '#fff' }}
