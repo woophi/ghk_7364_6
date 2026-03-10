@@ -31,7 +31,7 @@ export const ThxLayout = () => {
           view="secondary"
           href={link}
           onClick={() => {
-            window.gtag('event', '7364_open_pds_final_bundle', { var: 'var6' });
+            window.gtag('event', '7364_open_pds_final_bundle_step7', { var: 'var6' });
           }}
         >
           Открыть ПДС
