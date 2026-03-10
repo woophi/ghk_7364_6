@@ -218,7 +218,7 @@ export const App = () => {
   };
 
   const goToStep4 = () => {
-    window.gtag('event', '7364_click_open_deposit_step5');
+    window.gtag('event', '7364_click_open_deposit_step5', { var: 'var6' });
     if (shouldErrorVkladSum) {
       setError(`Сумма вклада должна быть равна сумме ПДС — ${pdsSum.toLocaleString('ru-RU')} ₽`);
       return;
@@ -300,7 +300,7 @@ export const App = () => {
             block
             view="primary"
             onClick={() => {
-              window.gtag('event', '7364_click_pay_deposit_step5_1');
+              window.gtag('event', '7364_click_pay_deposit_step5_1', { var: 'var6' });
               setSteps('step5');
             }}
           >
